@@ -1,5 +1,5 @@
 import { Document, model, Schema } from "mongoose";
-import { LanguageLetters } from "../../common/LangTypes";
+import { LanguageLetters } from "../common/LangTypes";
 
 export interface IUser extends Document {
   chatid: string;

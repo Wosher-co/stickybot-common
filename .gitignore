@@ -1,9 +1,2 @@
-node_modules/
-package-lock.json
-dist/
-auth.json
-.env
-auth/
 yarn.lock
-src/message_example
-out/
+node_modules/

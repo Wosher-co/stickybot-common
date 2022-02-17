@@ -1,6 +1,6 @@
 import { Document, model, Schema } from "mongoose";
-import TimeUtils from "../../utils/timeUtils";
-import { AuthorDataType, JobTimestampsType, JobType, MediaDataType } from "../../common/SocketTypes";
+import { AuthorDataType, JobTimestampsType, JobType, MediaDataType } from "../common/SocketTypes";
+import TimeUtils from "../utils/timeUtils";
 
 export interface IJob extends Document {
   type: JobType;

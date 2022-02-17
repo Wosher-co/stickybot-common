@@ -1,5 +1,5 @@
 import { Document, model, Schema } from "mongoose";
-import { JobType } from "../../common/SocketTypes";
+import { JobType } from "../common/SocketTypes";
 
 export interface ISticker extends Document {
   chatid: string;
