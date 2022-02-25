@@ -161,3 +161,7 @@ export function uncompressButton(data: CompressedButton): IButton {
       return new TextButton(data.displayText);
   }
 }
+
+export function compressMenu(buttons: AllButtons[]): CompressedButton[] {
+  return buttons.map(compressButton);
+}
