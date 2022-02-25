@@ -27,9 +27,7 @@ export type AuthorDataType = {
 export type MediaDataType = {
   url: string;
   mimetype: string;
-  fileSha256: Uint8Array;
-  mediaKey: Uint8Array;
-  fileEncSha256: Uint8Array;
+  mediaKey: Buffer;
 };
 
 export type MessageDataType = {
