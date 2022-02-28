@@ -1,3 +1,5 @@
+import { throws } from "assert";
+
 export type WAInnerButtonFormat = {
   displayText: string;
   url?: string;
@@ -38,15 +40,20 @@ export interface IButton {
 export class TextButton implements IButton {
   type: ButtonType;
   displayText: string;
+  buttonId: string="1";
   
   payload: () => WAButtonFormat;
 
-  constructor(displayText: string) {
+  constructor(displayText: string, execute: string | undefined=undefined) {
     this.type = ButtonType.TextButton;
     this.displayText = displayText;
+    if (execute !== undefined) {
+      this.buttonId = execute;
+    }
+
     this.payload = (): WAButtonFormat => {
       return {
-        buttonId: "id",
+        buttonId: this.buttonId,
         buttonText: {
           displayText: this.displayText,
         },
@@ -107,19 +114,23 @@ export class CallButton implements IButton {
 export class QuickReplyButton implements IButton {
   type: ButtonType;
   displayText: string;
+  buttonId: string = "id-like-buttons-message";
   
   payload: () => WAButtonFormat;
 
-  constructor(displayText: string) {
+  constructor(displayText: string, execute: string | undefined=undefined) {
     this.type = ButtonType.TextButton;
     this.displayText = displayText;
+    if (execute !== undefined) {
+      this.buttonId = execute;
+    }
 
     this.payload = (): WAButtonFormat => {
       return {
         index: 1,
         quickReplyButton: {
           displayText: this.displayText,
-          id: "id-like-buttons-message",
+          id: this.buttonId,
         },
       }
     }
