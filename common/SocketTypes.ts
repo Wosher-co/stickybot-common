@@ -14,8 +14,10 @@ export enum MessageType {
   IMAGE, 
   VIDEO,
   STICKER,
-  MENU,
+  BUTTON,
   SECTION,
+  BUTTON_RESPONSE,
+  SECTION_RESPONSE,
   OTHER,
 }
 
