@@ -1,6 +1,19 @@
 import { Document, model, Schema } from "mongoose";
 import { LanguageLetters } from "../common/LangTypes";
 
+type Promps = {
+  welcome: boolean;
+  firstSticker: boolean;
+  firstStickerSent: boolean;
+  referral: boolean;
+}
+
+type Referral = {
+  usedCode: string | null;
+  userCode: string | null;
+  uses: number;
+}
+
 export interface IUser extends Document {
   chatid: string;
   number: string;
@@ -8,7 +21,8 @@ export interface IUser extends Document {
   banned: boolean;
   lang: LanguageLetters;
   timestamp: Date;
-  sentWelcome: boolean;
+  promps: Promps;
+  referral: Referral;
   stickers: Schema.Types.ObjectId[];
   feedback: Schema.Types.ObjectId[];
 }
@@ -20,7 +34,17 @@ export const UserSchema = new Schema<IUser>({
   banned: { type: Boolean, required: true, default: false },
   lang: { type: String, require: true, default: "en" },
   timestamp: { type: Date, required: true, default: new Date() },
-  sentWelcome: { type: Boolean, required: false, default: false },
+  promps: {
+    welcome: { type: Boolean, required: true, default: false },
+    firstSticker: { type: Boolean, required: true, default: false },
+    firstStickerSent: { type: Boolean, required: true, default: false },
+    referral: { type: Boolean, required: true, default: false },
+  },
+  referral: {
+    usedCode: { type: String, required: false, default: null },
+    userCode: { type: String, required: false, default: null },
+    uses: { type: Number, required: true, default: 0 },
+  },
   stickers: [{ type: Schema.Types.ObjectId, ref: "Sticker" }],
   feedback: [{ type: Schema.Types.ObjectId, ref: "Feedback" }],
 });
