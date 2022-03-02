@@ -1,6 +1,6 @@
 export enum ExpressRoutes {
   HEALTH = "/health",
   MESSAGE = "/message",
-  WAUSER = "/wauser",
+  WAPP = "/wapp",
   USER = "/user",
 }
